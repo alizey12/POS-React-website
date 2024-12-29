@@ -79,7 +79,7 @@ const SignupLogin = () => {
             </div>
             {!isLogin && (
               <div>
-                <label className="block text-sm font-medium text-white">Confirm Password</label>
+                <label className="block text-sm font-medium text-gray-700">Confirm Password</label>
                 <input
                   type="password"
                   name="confirmPassword"
@@ -91,17 +91,17 @@ const SignupLogin = () => {
             )}
             <button
               type="submit"
-              className="w-full bg-orange-400 text-white p-2 rounded-md hover:bg-amber-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               {isLogin ? 'Login' : 'Sign Up'}
             </button>
           </form>
-          <p className="text-center text-sm text-gray-300 mt-4">
+          <p className="text-center text-sm text-gray-500 mt-4">
             {isLogin ? 'New here?' : 'Already have an account?'}
             <button
               type="button"
               onClick={toggleForm}
-              className="ml-1 text-teal-300 hover:underline"
+              className="ml-1 text-blue-600 hover:underline"
             >
               {isLogin ? 'Sign up' : 'Login'}
             </button>
