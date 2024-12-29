@@ -9,7 +9,7 @@ const SignupLogin = () => {
     password: '',
     confirmPassword: '',
   });
-  const [errors, setErrors] = useState({});
+
   const [storedUser, setStoredUser] = useState(null);
   const navigate = useNavigate();
 
@@ -18,47 +18,41 @@ const SignupLogin = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: '' }); // Clear error on change
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.email) newErrors.email = 'Please enter email';
-    if (!formData.password) newErrors.password = 'Please enter password';
-    if (!isLogin && formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    const { email, password, confirmPassword } = formData;
 
-    const { email, password } = formData;
-
-    if (isLogin) {
+    if (!email || !password) {
+      toast.error('All fields are required');
+      return;
+    }
+    if (!isLogin) {
+      if (password !== confirmPassword) {
+        toast.error('Passwords do not match');
+        return;
+      }
+      setStoredUser({ email, password });
+      toast.success('Signup successful!');
+      setTimeout(() => setIsLogin(true), 1500);
+    } else {
       if (storedUser && email === storedUser.email && password === storedUser.password) {
         toast.success('Login successful!');
         setTimeout(() => navigate('/dashboard'), 1500);
       } else {
         toast.error('Your email or password is incorrect. Please try again.');
       }
-    } else {
-      setStoredUser({ email, password });
-      toast.success('Signup successful!');
-      setTimeout(() => setIsLogin(true), 1500);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-800 to-yellow-500">
+    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-purple-800 to-yellow-500">
       <div className="flex bg-white shadow-lg rounded-lg overflow-hidden w-3/4 max-w-4xl">
         <div className="w-1/2 bg-purple-800 flex items-center justify-center">
-          <img src="src/assets/login-icon (1).png" className='w-full object-cover rounded-md h-full' alt="Login Icon" />
+          <img src="src/assets/login-icon (1).png" className='w-auto rounded-md' alt="Login Icon" />
         </div>
-        <div className="w-1/2 bg-fuchsia-900 p-8 flex flex-col justify-center">
+        <div className="w-1/2 bg-fuchsia-900 p-8">
           <h2 className="text-2xl font-bold text-center text-white">
             {isLogin ? 'Login' : 'Sign Up'}
           </h2>
@@ -70,9 +64,8 @@ const SignupLogin = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 block w-full p-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full p-2 border border-black rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               />
-              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
             <div>
               <label className="block text-sm font-medium text-white">Password</label>
@@ -81,21 +74,19 @@ const SignupLogin = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="mt-1 block w-full p-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               />
-              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
             </div>
             {!isLogin && (
               <div>
                 <label className="block text-sm font-medium text-white">Confirm Password</label>
                 <input
                   type="password"
-                  name="confirmPassword"
+                  name="confirmPassword" on
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="mt-1 block w-full p-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 />
-                {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
               </div>
             )}
             <button

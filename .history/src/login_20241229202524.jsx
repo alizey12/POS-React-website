@@ -53,12 +53,12 @@ const SignupLogin = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-800 to-yellow-500">
-      <div className="flex bg-white shadow-lg rounded-lg overflow-hidden w-3/4 max-w-4xl">
-        <div className="w-1/2 bg-purple-800 flex items-center justify-center">
-          <img src="src/assets/login-icon (1).png" className='w-full object-cover rounded-md h-full' alt="Login Icon" />
+    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-purple-800 to-yellow-500">
+      <div className="flex shadow-lg rounded-lg overflow-hidden w-3/4 max-w-4xl">
+        <div className="w-1/2 bg-transparent flex items-center justify-center">
+          <img src="src/assets/login-icon (1).png" className='w-auto h-auto rounded-md' alt="Login Icon" />
         </div>
-        <div className="w-1/2 bg-fuchsia-900 p-8 flex flex-col justify-center">
+        <div className="w-1/2 bg-fuchsia-900 p-8">
           <h2 className="text-2xl font-bold text-center text-white">
             {isLogin ? 'Login' : 'Sign Up'}
           </h2>
