@@ -1,0 +1,9 @@
+/* light mode */
+
+:root {
+  --sidebar-bg: #008080; /* Teal */
+  --text-color: #000000; /* Black */
+  --primary-light: #f4f4f4;
+  --secondary: #555;
+  
+}

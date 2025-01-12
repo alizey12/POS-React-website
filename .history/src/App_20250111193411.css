@@ -1,0 +1,41 @@
+/* light mode */
+
+:root {
+  --sidebar-bg: #008080; /* Teal */
+  --text-color: #000000; /* Black */
+  --primary-light: #f4f4f4;
+  --secondary: #555;
+}
+
+/* Light Mode (Default) */
+
+
+/* Dark Mode */
+[data-theme='dark'] {
+  --sidebar-bg: #008080; /* Teal */
+  --text-color: #ffffff; /* White */
+  --primary-dark: #1a1a1a;
+  --secondary-dark: #b0b0b0;
+}
+
+/* General Styles */
+body {
+  background-color: var(--primary-light);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+[data-theme='dark'] body {
+  background-color: var(--primary-dark);
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button {
+  cursor: pointer;
+}
+
