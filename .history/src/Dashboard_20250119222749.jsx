@@ -68,7 +68,7 @@ const Dashboard = () => {
           
         />
 
-<main className="p-4">
+{/* <main className="p-4">
   <h2 className="text-2xl mt-16 font-bold">Dashboard</h2>
   <div
     className={`mt-4 ${
@@ -77,10 +77,8 @@ const Dashboard = () => {
   >
     <MainContent />
   </div>
-  <div className="h-[2000px] mt-8 bg-primary-light dark:bg-primary-dark">
-    
-  </div>
-</main>
+  <div className="h-[2000px] mt-8 bg-primary-light dark:bg-primary-dark"></div>
+</main> */}
       </div>
 
       {/* Notification */}

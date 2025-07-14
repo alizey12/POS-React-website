@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "./navbar";
 import Sidebar from "./sidebar";
-import  MainContent from "../src/MainContent";
+import  MainContent } from "../src/MainContent";
 import "./App.css";
 
 const Dashboard = () => {
@@ -77,9 +77,7 @@ const Dashboard = () => {
   >
     <MainContent />
   </div>
-  <div className="h-[2000px] mt-8 bg-primary-light dark:bg-primary-dark">
-    
-  </div>
+  <div className="h-[2000px] mt-8 bg-primary-light dark:bg-primary-dark"></div>
 </main>
       </div>
 

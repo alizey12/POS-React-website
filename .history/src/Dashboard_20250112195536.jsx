@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "./navbar";
 import Sidebar from "./sidebar";
-import  MainContent from "../src/MainContent";
+
 import "./App.css";
 
 const Dashboard = () => {
@@ -65,26 +65,31 @@ const Dashboard = () => {
           isSidebarOpen={isSidebarOpen}
           toggleTheme={toggleTheme}
           isDarkMode={isDarkMode}
-          
         />
 
-<main className="p-4">
-  <h2 className="text-2xl mt-16 font-bold">Dashboard</h2>
-  <div
-    className={`mt-4 ${
-      isSidebarOpen ? "text-secondary" : "dark:text-secondary-dark"
-    }`}
-  >
-    <MainContent />
-  </div>
-  <div className="h-[2000px] mt-8 bg-primary-light dark:bg-primary-dark">
-    
-  </div>
-</main>
+        <main className="p-4">
+          <h2 className="text-2xl mt-16 font-bold">Dashboard</h2>
+          <p
+            className={`mt-4 ${
+              isSidebarOpen ? "text-secondary" : "dark:text-secondary-dark"
+            }`}
+          >
+            1. Fixed sidebar, hidden on small devices.
+          </p>
+          <p className="text-secondary dark:text-secondary-dark">
+            2. Fixed Navbar.
+          </p>
+          <div className="h-[2000px] mt-8 bg-primary-light dark:bg-primary-dark"></div>
+        </main>
       </div>
 
       {/* Notification */}
-     
+      <Notification
+        message={notification.message}
+        type={notification.type}
+        isVisible={notification.isVisible}
+        onClose={() => setNotification({ ...notification, isVisible: false })}
+      />
     </div>
   );
 };
